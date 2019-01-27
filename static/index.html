@@ -1,0 +1,84 @@
+</!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>Анонимная стена сообщений</title>
+	<link rel="stylesheet" type="text/css" href="/static/style.css">
+</head>
+<body>
+	<div class="form-container">
+		<form class="contact-inner">
+    		<p class="contact-input">
+        		<textarea name="message" placeholder="Your Message..."></textarea>
+      		</p>
+
+      		<p class="contact-submit">
+        		<input type="submit" value="Send Message">
+      		</p>
+    	</form>
+	</div>
+	<div class="message-container" id="animation"  onclick="update()">
+		<div class="post">
+			<div class="user" ><em>Anonymous №212321</em></div>
+			<div class="text" align="center">Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diem nonummy nibh euismod tincidunt ut lacreet dolore magna aliguam erat volutpat.
+			Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diem nonummy nibh euismod tincidunt ut lacreet dolore magna aliguam erat volutpat.
+		Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diem nonummy nibh euismod tincidunt ut lacreet dolore magna aliguam erat volutpat.
+			</div>
+		</div>
+		<div class="post">
+			<div class="user"><em>Anonymous №212321</em></div>
+			<div class="text">
+				кек
+				elit, sed diem nonummy nibh euismod tincidunt ut lacreet dolore magna aliguam erat volutpat. Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diem nonummy nibh euismod tincidunt ut lacreet dolore magna aliguam erat volutpat.
+
+			</div>
+		</div>
+		<div class="post">
+			<div class="user"><em>Anonymous №216545</em></div>
+			<div class="text">
+				кек
+			</div>
+		</div>
+	</div>
+	<script type="text/javascript">
+		function startAnimation() {
+    		document.getElementById("animation").style.animation = "animationName 1.5s ease-out 1 forwards";
+		}
+
+
+		function getUpdates() {
+			alert('lke')
+			var xmlHttp = new XMLHttpRequest();
+    		var body = 'id=1'
+    		xmlHttp.onreadystatechange = function() { 
+        		if (xmlHttp.readyState == 4 && xmlHttp.status == 200)
+            		alert(xmlHttp.responseText);
+    		}
+    		xmlHttp.open("GET", 'http://0.0.0.0:8080/updates', true); // true for asynchronous 
+    		xmlHttp.send(body);
+		}
+
+		function sendMessage() {
+    		var xmlHttp = new XMLHttpRequest();
+    		xmlHttp.onreadystatechange = function() { 
+        		if (xmlHttp.readyState == 4 && xmlHttp.status == 200)
+            		alert(xmlHttp.responseText);
+    		}
+    		xmlHttp.open("POST", 'http://0.0.0.0:8080/reciever', true); // true for asynchronous 
+    		xmlHttp.send(null);
+		}
+
+		function update(){
+			alert('kek')
+			var msg_cnt = document.getElementById("animation")
+
+			var str = '<div class="post"><div class="user"><em>Anonymous №216545</em></div><div class="text">кек</div></div>';
+
+			msg_cnt.innerHTML = str + msg_cnt.innerHTML;
+		}
+
+		
+
+	</script>>
+</body>
+</html>
